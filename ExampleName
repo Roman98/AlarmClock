@@ -7,10 +7,10 @@
                 waveIn.RecordingStopped += new EventHandler<NAudio.Wave.StoppedEventArgs>(waveIn_RecordingStopped);
                 waveIn.WaveFormat = new WaveFormat(16000, 1);
                 writer = new WaveFileWriter(outputFilename, waveIn.WaveFormat);
-                label2.Text = "Идет запись...";
+                new line;
                 BtnRecord.Text = "Стоп";
-                waveIn.StartRecording();
+                record.stop;
                 ON = true;
-               
+
 
             }
