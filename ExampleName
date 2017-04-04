@@ -1,0 +1,16 @@
+     if (ON == false)
+            {
+                sp.Stop();
+                waveIn = new WaveIn();
+                waveIn.DeviceNumber = 0;
+                waveIn.DataAvailable += waveIn_DataAvailable;
+                waveIn.RecordingStopped += new EventHandler<NAudio.Wave.StoppedEventArgs>(waveIn_RecordingStopped);
+                waveIn.WaveFormat = new WaveFormat(16000, 1);
+                writer = new WaveFileWriter(outputFilename, waveIn.WaveFormat);
+                label2.Text = "Идет запись...";
+                BtnRecord.Text = "Стоп";
+                waveIn.StartRecording();
+                ON = true;
+               
+
+            }
