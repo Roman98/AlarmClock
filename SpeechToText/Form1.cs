@@ -24,6 +24,7 @@ namespace SpeechToText
 {
     public partial class Form1 : Form
     {//новый коммент
+        //коменьт2
         Timer timer01 = new Timer();
        // public WMPLib.WindowsMediaPlayer WMP = new WMPLib.WindowsMediaPlayer();
         SoundPlayer sp = new SoundPlayer("1_converted.wav");
