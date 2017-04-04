@@ -26,13 +26,15 @@ namespace SpeechToText
     {//новый коммент
         //коменьт2
         Timer timer01 = new Timer();
-       // public WMPLib.WindowsMediaPlayer WMP = new WMPLib.WindowsMediaPlayer();
-        SoundPlayer sp = new SoundPlayer("1_converted.wav");
+        //wmp player
+        public WMPLib.WindowsMediaPlayer WMP = new WMPLib.WindowsMediaPlayer();
+        //SoundPlayer sp = new SoundPlayer("1_converted.wav");
         bool b = false;
         WaveIn waveIn;
         WaveFileWriter writer;
         string outputFilename = "demo.wav";
         bool ON = false;
+        public String MusicFile { get; set; }
         string[] patters = {"Шла Саша по шоссе и сосала сушку",
             "Течет речка печет печка",
             "скороговорки как караси на сковородке",
@@ -77,6 +79,8 @@ namespace SpeechToText
             //цвет индикатора
             textBox3.ForeColor = Color.FromArgb(255, 123, 91);
         }
+        
+        
 
         public void visibleNone()
         {
@@ -126,7 +130,7 @@ namespace SpeechToText
         {
             if (ON == false)
             {
-                sp.Stop();
+                WMP.controls.stop();
                 waveIn = new WaveIn();
                 waveIn.DeviceNumber = 0;
                 waveIn.DataAvailable += waveIn_DataAvailable;
@@ -142,7 +146,7 @@ namespace SpeechToText
             }
             else
             {
-                sp.Play();
+                WMP.controls.play();
                 waveIn.StopRecording();
                 writer.Close(); 
                 label2.Text = "";
@@ -176,7 +180,7 @@ namespace SpeechToText
                     textBox2.Text = "Правильно!";
                     textBox2.TextAlign = HorizontalAlignment.Center;
                     timer1.Stop();
-                    sp.Stop();
+                    WMP.controls.stop();
                     maskedTextBox1.Visible = true;
                     maskedTextBox1.Text = "00:00";
                     button3.Text = "Завести будильник";
@@ -292,7 +296,7 @@ namespace SpeechToText
         {
             if (label3.Text == label4.Text + ":00")
             {
-                sp.Play();
+                WMP.controls.play();
                 //Показываем кнопки
                 textBox1.Visible = true;
                 button2.Visible = true;
@@ -339,5 +343,23 @@ namespace SpeechToText
         {
 
         }
+        //выбор звукового файла
+        private void btnMusic_Click(object sender, EventArgs e)
+        {
+            
+        
+
+           if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                WMP.URL = openFileDialog1.FileName;
+            WMP.settings.volume = 100;
+              WMP.controls.stop();
+
+        }
+        public void StopMusic()
+        {
+            WMP.controls.stop();
+        }
+
+           
     }
 }

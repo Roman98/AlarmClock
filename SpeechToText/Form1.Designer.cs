@@ -45,6 +45,8 @@ namespace SpeechToText
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnMusic = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -173,12 +175,27 @@ namespace SpeechToText
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
+            // btnMusic
+            // 
+            this.btnMusic.Location = new System.Drawing.Point(224, 130);
+            this.btnMusic.Name = "btnMusic";
+            this.btnMusic.Size = new System.Drawing.Size(75, 23);
+            this.btnMusic.TabIndex = 16;
+            this.btnMusic.Text = "Мелодия";
+            this.btnMusic.UseVisualStyleBackColor = true;
+            this.btnMusic.Click += new System.EventHandler(this.btnMusic_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(315, 361);
+            this.Controls.Add(this.btnMusic);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -214,6 +231,8 @@ namespace SpeechToText
         private System.Windows.Forms.TextBox textBox2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnMusic;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
