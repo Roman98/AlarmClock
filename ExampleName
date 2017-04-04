@@ -9,8 +9,8 @@
                 writer = new WaveFileWriter(outputFilename, waveIn.WaveFormat);
                 label2.Text = "Идет запись...";
                 BtnRecord.Text = "Стоп";
-                waveIn.StartRecording();
+                record.stop;
                 ON = true;
-               
+
 
             }
