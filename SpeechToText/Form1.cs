@@ -34,6 +34,7 @@ namespace SpeechToText
         WaveFileWriter writer;
         string outputFilename = "demo.wav";
         bool ON = false;
+        
         public String MusicFile { get; set; }
         string[] patters = {"Шла Саша по шоссе и сосала сушку",
             "Течет речка печет печка",
@@ -245,7 +246,7 @@ namespace SpeechToText
                 int hours = Int16.Parse(hoursMinutes[0]);
                 int minutes = Int16.Parse(hoursMinutes[1]);
                 //  DateTime d1 = new DateTime(0, 0, 0, 23, 59, 0, 0);
-                if (topHours > hours && topMinutes > minutes)
+                if (topHours >= hours && topMinutes >= minutes)
                 {
                     label4.Text = maskedTextBox1.Text;
                     timer2.Start();
@@ -256,7 +257,12 @@ namespace SpeechToText
                 }
                 else
                 {
-                    textBox3.Visible = true;
+                    //если ввели неправильное время
+                     MessageBox.Show("Вы ввели некорректное время, повторите ввод", "Error",
+                       MessageBoxButtons.OK);
+
+                          
+                    //textBox3.Visible = true;
                 }
 
             }
