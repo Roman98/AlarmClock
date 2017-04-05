@@ -43,6 +43,7 @@ namespace SpeechToText
         WaveFileWriter writer;
         string outputFilename = "demo.wav";
         bool ON = false;
+        bool stop = false;
 
         // public String MusicFile { get; set; }
 
@@ -155,6 +156,7 @@ namespace SpeechToText
 
         private void SpeechToTex()
         {
+            WMPL.URL = openFileDialog1.FileName;
             WMP.controls.play();
             waveIn.StopRecording();
             writer.Close();
@@ -564,16 +566,18 @@ namespace SpeechToText
 
         private void timer3_Tick(object sender, EventArgs e)
         {
+            
+             if (label5.Text == label7.Text + ":00"&& !stop)
+             {
 
-             if (label5.Text == label7.Text + ":00")
-            {
-
+                 stop = true;
                 WMPL.controls.play();
-                button5.Visible = true;
-//                MessageBox.Show(
-//                    "Здесь надо вместо текста создать переменную, которую мы будем вводить как напоминание",
-//                    "Будильник",
-//                    MessageBoxButtons.OK);
+               // button5.Visible = true;
+             if( MessageBox.Show(
+                    "Здесь надо вместо текста создать переменную, которую мы будем вводить как напоминание",
+                 "Будильник",
+                   MessageBoxButtons.OK)==DialogResult.OK) WMPL.controls.stop();
+
                 
 
 
