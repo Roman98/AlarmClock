@@ -506,6 +506,7 @@ namespace SpeechToText
 
         private void button4_Click(object sender, EventArgs e)
         {
+           
             if (b == false)
             {
                 string getTime1 = maskedTextBox2.Text.ToString();
@@ -521,6 +522,7 @@ namespace SpeechToText
                     label7.Text = maskedTextBox2.Text;
                     timer3.Start();
                     maskedTextBox2.Visible = false;
+                    textBox4.Visible = false; 
                     button4.Text = "Убрать будильник";
                     b = true;
                     //  textBox3.Visible = false;
@@ -541,6 +543,7 @@ namespace SpeechToText
                 label7.Text = "00:00";
                 timer3.Stop();
                 maskedTextBox2.Visible = true;
+                textBox4.Visible = true; 
                 button4.Text = "Завести будильник";
                 b = false;
             }
@@ -566,17 +569,26 @@ namespace SpeechToText
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-            
+            string reminder = textBox4.Text;   
              if (label5.Text == label7.Text + ":00"&& !stop)
              {
 
                  stop = true;
                 WMPL.controls.play();
                // button5.Visible = true;
-             if( MessageBox.Show(
-                    "Здесь надо вместо текста создать переменную, которую мы будем вводить как напоминание",
-                 "Будильник",
-                   MessageBoxButtons.OK)==DialogResult.OK) WMPL.controls.stop();
+                 if (MessageBox.Show(
+                         reminder,
+                         "Будильник",
+                         MessageBoxButtons.OK) == DialogResult.OK)
+                 {
+                     WMPL.controls.stop();
+                     maskedTextBox2.Visible = true;
+                     maskedTextBox2.Text = "00:00";
+                     textBox4.Visible = true;
+                     textBox4.Text = "";
+                     button4.Text = "Завести будильник";
+                     b = false;
+                 }
 
                 
 
