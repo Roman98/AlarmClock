@@ -36,6 +36,7 @@ namespace SpeechToText
         //wmp player
         public WMPLib.WindowsMediaPlayer WMP = new WMPLib.WindowsMediaPlayer();
         public WMPLib.WindowsMediaPlayer WMPL = new WMPLib.WindowsMediaPlayer();
+        
         //SoundPlayer sp = new SoundPlayer("1_converted.wav");
         bool b = false;
         WaveIn waveIn;
@@ -101,6 +102,11 @@ namespace SpeechToText
             textBox2.BackColor = Color.FromArgb(25, 30, 49);
             //цвет индикатора
             textBox3.ForeColor = Color.FromArgb(255, 123, 91);
+
+            WMP.URL = "standart.mp3";
+            WMP.controls.stop();
+            WMPL.URL = "standart.mp3";
+            WMPL.controls.stop();
         }
 
 
