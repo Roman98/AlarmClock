@@ -588,12 +588,14 @@ namespace SpeechToText
                      textBox4.Text = "";
                      button4.Text = "Завести будильник";
                      b = false;
+                     stop = false;
                  }
 
                 
 
 
             }
+            
         }
     }
 }
