@@ -46,6 +46,7 @@ namespace SpeechToText
             this.btnMusic = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -57,10 +58,11 @@ namespace SpeechToText
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -238,6 +240,13 @@ namespace SpeechToText
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Напомнить";
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(76, 282);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(150, 20);
+            this.textBox4.TabIndex = 35;
+            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(76, 243);
@@ -318,12 +327,9 @@ namespace SpeechToText
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // textBox4
+            // errorProvider1
             // 
-            this.textBox4.Location = new System.Drawing.Point(76, 282);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(150, 20);
-            this.textBox4.TabIndex = 35;
+            this.errorProvider1.ContainerControl = this;
             // 
             // Form1
             // 
@@ -340,6 +346,7 @@ namespace SpeechToText
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,6 +380,7 @@ namespace SpeechToText
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
 
     }
 }

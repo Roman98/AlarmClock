@@ -449,6 +449,8 @@ namespace SpeechToText
                 //  DateTime d1 = new DateTime(0, 0, 0, 23, 59, 0, 0);
                 if (topHours >= hours && topMinutes >= minutes)
                 {
+                    errorProvider1.Clear();
+
                     label4.Text = maskedTextBox1.Text;
                     timer2.Start();
                     maskedTextBox1.Visible = false;
@@ -459,8 +461,10 @@ namespace SpeechToText
                 else
                 {
                     //если ввели неправильное время
-                    MessageBox.Show("Вы ввели некорректное время, повторите ввод", "Error",
-                        MessageBoxButtons.OK);
+
+                    errorProvider1.SetError(maskedTextBox1, "Вы ввели некорректное время, повторите ввод");
+                    //MessageBox.Show("Вы ввели некорректное время, повторите ввод", "Error",
+                       // MessageBoxButtons.OK);
 
 
                     //textBox3.Visible = true;
@@ -519,6 +523,7 @@ namespace SpeechToText
                 //  DateTime d1 = new DateTime(0, 0, 0, 23, 59, 0, 0);
                 if (topHours1 >= hours && topMinutes1 >= minutes)
                 {
+                    errorProvider1.Clear();
                     label7.Text = maskedTextBox2.Text;
                     timer3.Start();
                     maskedTextBox2.Visible = false;
@@ -529,9 +534,10 @@ namespace SpeechToText
                 }
                 else
                 {
+                    errorProvider1.SetError(maskedTextBox2, "Вы ввели некорректное время, повторите ввод");
                     //если ввели неправильное время
-                    MessageBox.Show("Вы ввели некорректное время, повторите ввод", "Error",
-                        MessageBoxButtons.OK);
+                   // MessageBox.Show("Вы ввели некорректное время, повторите ввод", "Error",
+                      //  MessageBoxButtons.OK);
 
 
                     //textBox3.Visible = true;
