@@ -24,14 +24,8 @@ namespace SpeechToText
 {
     public partial class Form1 : Form
     {
-//новый коммент
-        //коменьт2
-
-
-
 
         Timer timer01 = new Timer();
-
 
         //wmp player
         public WMPLib.WindowsMediaPlayer WMP = new WMPLib.WindowsMediaPlayer();
@@ -44,12 +38,6 @@ namespace SpeechToText
         string outputFilename = "demo.wav";
         bool ON = false;
         bool stop = false;
-
-        // public String MusicFile { get; set; }
-
-
-
-
 
         string[] patters =
         {
@@ -87,7 +75,6 @@ namespace SpeechToText
             textBox2.Visible = false;
             textBox3.Visible = false;
 
-
             label6.ForeColor = Color.White;
             //кнопка завести будильник
             button3.BackColor = Color.FromArgb(44, 51, 80);
@@ -109,50 +96,6 @@ namespace SpeechToText
             WMPL.URL = "standart.mp3";
             WMPL.controls.stop();
         }
-
-
-
-        public void visibleNone()
-        {
-            this.Visible = false;
-        }
-
-
-
-        /* private void button1_Click(object sender, EventArgs e)
-         {
-             if (ON == false)
-             {
-                 sp.Stop();
-                 waveIn = new WaveIn();
-                 waveIn.DeviceNumber = 0;
-                 waveIn.DataAvailable += waveIn_DataAvailable;
-                 waveIn.RecordingStopped += new EventHandler<NAudio.Wave.StoppedEventArgs>(waveIn_RecordingStopped);
-                 waveIn.WaveFormat = new WaveFormat(16000, 1);
-                 writer = new WaveFileWriter(outputFilename, waveIn.WaveFormat);
-                 label2.Text = "Идет запись...";
-                 button1.Text = "Стоп";
-                 waveIn.StartRecording();
-                 ON = true;
-
-             }
-             else
-             {
-
-                 sp.Play();    
-                 waveIn.StopRecording();
-                 writer.Close();
-                 label2.Text = "";
-                 ON = false;
-                 button1.Text = "Запись";
-                 //button2_Click(this, EventArgs.Empty);
-                 button1.Text = "Распознавание";
-
-             }
-
-
-         }*/
-
 
         private void SpeechToTex()
         {
@@ -176,10 +119,6 @@ namespace SpeechToText
             HttpWebResponse response = (HttpWebResponse) request.GetResponse();
             // Open the stream using a StreamReader for easy access.
             StreamReader reader = new StreamReader(response.GetResponseStream());
-            // Read the content.
-            // label1.Text = reader.ReadToEnd();
-            // Clean up the streams.
-
 
             string a = String.Copy(reader.ReadToEnd());
             //*************ПРОВЕРКА НА ПРАВИЛЬНОСТЬ ПРОИЗНОШЕНИЯ*************
@@ -199,12 +138,6 @@ namespace SpeechToText
                 button2.Visible = false;
                 textBox1.Visible = false;
 
-                //for (int x = 0; x < 20; x++)
-                //{
-                //    button3.Location = new Point(button3.Location.X, button3.Location.Y+x);
-                //}
-                //textBox2.Visible = false;
-
             }
             else
             {
@@ -221,27 +154,7 @@ namespace SpeechToText
 
         private void button2_Click(object sender, EventArgs e)
         {
-            /* if (ON == false)
-             {
-                 WMP.controls.stop();
-                 waveIn = new WaveIn();
-                 waveIn.DeviceNumber = 0;
-                 waveIn.DataAvailable += waveIn_DataAvailable;
-                 waveIn.RecordingStopped += new EventHandler<NAudio.Wave.StoppedEventArgs>(waveIn_RecordingStopped);
-                 waveIn.WaveFormat = new WaveFormat(16000, 1);
-                 writer = new WaveFileWriter(outputFilename, waveIn.WaveFormat);
-                 label2.Text = "Идет запись...";
-                 button2.Text = "Стоп";
-                 waveIn.StartRecording();
-                 ON = true;
-                
- 
-             }
-             else
-             {
-                SpeechToTex();
-             }*/
-
+            
         }
 
         void waveIn_DataAvailable(object sender, WaveInEventArgs e)
@@ -263,69 +176,10 @@ namespace SpeechToText
 
         }
 
-
-
-
-
-
-
-
-
         private void button3_Click(object sender, EventArgs e)
         {
-            /*  if (b == false)
-              {
-                  string getTime = maskedTextBox1.Text.ToString();
-                  int topHours = 23;
-                  int topMinutes = 59;
-  
-                  string[] hoursMinutes = getTime.Split(':');
-                  int hours = Int16.Parse(hoursMinutes[0]);
-                  int minutes = Int16.Parse(hoursMinutes[1]);
-                  //  DateTime d1 = new DateTime(0, 0, 0, 23, 59, 0, 0);
-                  if (topHours >= hours && topMinutes >= minutes)
-                  {
-                      label4.Text = maskedTextBox1.Text;
-                      timer2.Start();
-                      maskedTextBox1.Visible = false;
-                      button3.Text = "Убрать будильник";
-                      b = true;
-                      textBox3.Visible = false;
-                  }
-                  else
-                  {
-                      //если ввели неправильное время
-                       MessageBox.Show("Вы ввели некорректное время, повторите ввод", "Error",
-                         MessageBoxButtons.OK);
-  
-                            
-                      //textBox3.Visible = true;
-                  }*/
-
-            /*}
-            else if (b == true)
-            {
-                label4.Text = "00:00";
-                timer2.Stop();
-                maskedTextBox1.Visible = true;
-                button3.Text = "Завести будильник";
-                b = false;
-            }  */
 
         }
-
-
-//        private void button4_Click(object sender, EventArgs e)
-//        {
-//            sp.Stop();
-//            button4.Enabled = false;
-//            maskedTextBox1.Visible = true;
-//            maskedTextBox1.Text = "00:00";
-//            button3.Text = "Завести будильник";
-//            
-//            b = false;
-//        }
-
         private void Form1_Load_1(object sender, EventArgs e)
         {
 
@@ -337,25 +191,11 @@ namespace SpeechToText
 
         private void timer2_Tick_1(object sender, EventArgs e)
         {
-           /* if (label3.Text == label4.Text + ":00")
-            {
-                WMP.controls.play();
-                //Показываем кнопки
-                textBox1.Visible = true;
-                button2.Visible = true;
-                //вывод скороговорки
-                num_putter = rnd.Next(0, 9);
-                textBox1.TextAlign = HorizontalAlignment.Center;
-                textBox1.Text = patters[num_putter];
-
-
-            }*/
+           
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-
-
             label3.Text = DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" +
                           DateTime.Now.Second.ToString("00");
             label5.Text = DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" +
@@ -392,16 +232,9 @@ namespace SpeechToText
 
         }
 
-        //выбор звукового файла
         private void btnMusic_Click(object sender, EventArgs e)
         {
-//            
-//        
-//
-//           if (openFileDialog1.ShowDialog() == DialogResult.OK)
-//                WMP.URL = openFileDialog1.FileName;
-//            WMP.settings.volume = 100;
-//              WMP.controls.stop();
+      
 
         }
 
@@ -463,11 +296,7 @@ namespace SpeechToText
                     //если ввели неправильное время
 
                     errorProvider1.SetError(maskedTextBox1, "Вы ввели некорректное время, повторите ввод");
-                    //MessageBox.Show("Вы ввели некорректное время, повторите ввод", "Error",
-                       // MessageBoxButtons.OK);
 
-
-                    //textBox3.Visible = true;
                 }
 
             }
@@ -535,12 +364,6 @@ namespace SpeechToText
                 else
                 {
                     errorProvider1.SetError(maskedTextBox2, "Вы ввели некорректное время, повторите ввод");
-                    //если ввели неправильное время
-                   // MessageBox.Show("Вы ввели некорректное время, повторите ввод", "Error",
-                      //  MessageBoxButtons.OK);
-
-
-                    //textBox3.Visible = true;
                 }
                 
             }
