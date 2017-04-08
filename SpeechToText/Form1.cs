@@ -39,7 +39,23 @@ namespace SpeechToText
         bool ON = false;
         bool stop = false;
 
-        string[] patters =
+
+
+
+
+
+
+        // string[] patters;
+        List<string> patters = new List<string>();
+
+
+
+
+
+
+
+
+        string[] patters1 =
         {
             "Шла Саша по шоссе и сосала сушку",
             "Течет речка печет печка",
@@ -69,7 +85,7 @@ namespace SpeechToText
             button2.Region = rgn;
 
             //Скрываем кнопки и textbox
-            button5.Visible = false;
+     //       button5.Visible = false;
             button2.Visible = false;
             textBox1.Visible = false;
             textBox2.Visible = false;
@@ -95,6 +111,43 @@ namespace SpeechToText
             WMP.controls.stop();
             WMPL.URL = "standart.mp3";
             WMPL.controls.stop();
+
+
+
+            // Объект запроса
+            HttpWebRequest rew = (HttpWebRequest)WebRequest.Create("http://studypay.ru/alarmclock.php");
+            HttpWebResponse resp = (HttpWebResponse)rew.GetResponse();
+            WebHeaderCollection myWebHeaderCollection = resp.Headers;
+            rew.Accept = "*/*";
+            rew.Referer = "";
+            rew.Headers.Add("Accept-Language", "ru");
+            rew.Headers.Add("Accept-Encoding", "gzip, deflate");
+            StreamReader str = new StreamReader(rew.GetResponse().GetResponseStream(), Encoding.UTF8); //Encoding.UTF8, Encoding.Unicode, Encoding.ASCII .... 
+            string massage = str.ReadToEnd();
+            string a = massage.Trim(new Char[] { '[', ']' });
+            char[] delimiterChars = { ',' };
+            string[] words = a.Split(delimiterChars);
+            for (int i = 0; i < words.Length; i++)
+            {
+                int n = words[i].Length;
+                string l = words[i].Remove(n - 1, 1);
+                patters.Add(l.Remove(0, 1));
+
+            }
+
+
+            str.Close();
+
+
+
+
+
+
+
+
+
+
+
         }
 
         private void SpeechToTex()
@@ -121,6 +174,26 @@ namespace SpeechToText
             StreamReader reader = new StreamReader(response.GetResponseStream());
 
             string a = String.Copy(reader.ReadToEnd());
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             //*************ПРОВЕРКА НА ПРАВИЛЬНОСТЬ ПРОИЗНОШЕНИЯ*************
             if (a.Contains(patters[num_putter]) == true)
             {
@@ -323,6 +396,20 @@ namespace SpeechToText
         {
             if (label3.Text == label4.Text + ":00")
             {
+
+
+
+
+
+             
+
+
+
+
+
+
+
+
                 WMP.controls.play();
                 //Показываем кнопки
                 textBox1.Visible = true;
@@ -393,7 +480,7 @@ namespace SpeechToText
             maskedTextBox2.Visible = true;
             maskedTextBox2.Text = "00:00";
             button4.Text = "Завести будильник";
-            button5.Visible = false;
+   //         button5.Visible = false;
         }
 
         private void timer3_Tick(object sender, EventArgs e)
