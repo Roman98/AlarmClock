@@ -47,7 +47,6 @@ namespace SpeechToText
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -75,7 +74,7 @@ namespace SpeechToText
             this.tabControl1.Location = new System.Drawing.Point(-4, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(321, 357);
+            this.tabControl1.Size = new System.Drawing.Size(321, 402);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -96,7 +95,7 @@ namespace SpeechToText
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(313, 331);
+            this.tabPage1.Size = new System.Drawing.Size(313, 376);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Будильник";
             // 
@@ -206,7 +205,7 @@ namespace SpeechToText
             // 
             // btnMusic
             // 
-            this.btnMusic.Location = new System.Drawing.Point(217, 125);
+            this.btnMusic.Location = new System.Drawing.Point(109, 333);
             this.btnMusic.Name = "btnMusic";
             this.btnMusic.Size = new System.Drawing.Size(75, 23);
             this.btnMusic.TabIndex = 28;
@@ -227,7 +226,6 @@ namespace SpeechToText
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DodgerBlue;
             this.tabPage2.Controls.Add(this.textBox4);
-            this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.maskedTextBox2);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.label7);
@@ -236,26 +234,16 @@ namespace SpeechToText
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(313, 331);
+            this.tabPage2.Size = new System.Drawing.Size(313, 376);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Напомнить";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(76, 282);
+            this.textBox4.Location = new System.Drawing.Point(76, 252);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(150, 20);
             this.textBox4.TabIndex = 35;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(76, 243);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(150, 33);
-            this.button5.TabIndex = 34;
-            this.button5.Text = "Стоп";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // maskedTextBox2
             // 
@@ -295,7 +283,7 @@ namespace SpeechToText
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(232, 136);
+            this.button1.Location = new System.Drawing.Point(113, 329);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 30;
@@ -336,7 +324,7 @@ namespace SpeechToText
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(315, 361);
+            this.ClientSize = new System.Drawing.Size(315, 388);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -377,7 +365,6 @@ namespace SpeechToText
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ErrorProvider errorProvider1;
