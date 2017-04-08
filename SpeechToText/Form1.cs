@@ -269,10 +269,16 @@ namespace SpeechToText
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
+            int h = 9;
             label3.Text = DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" +
                           DateTime.Now.Second.ToString("00");
-            label5.Text = DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" +
-                          DateTime.Now.Second.ToString("00");
+            if ((h + DateTime.UtcNow.Hour) > 23)
+            {
+               h=(h + DateTime.UtcNow.Hour) - 24;
+            }
+            
+                label5.Text = h.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
+                          DateTime.UtcNow.Second.ToString("00");
         }
 
         private void label3_Click(object sender, EventArgs e)
