@@ -55,7 +55,7 @@ namespace SpeechToText
 
             WMP.URL = "standart.mp3";
             WMP.controls.stop();
-
+            
 
             this.num = num;
              comboBoxGTM.SelectedIndexChanged += comboBoxGTM_SelectedIndexChanged;
@@ -77,10 +77,6 @@ namespace SpeechToText
 
          private void InitializeComponent()
          {
-         
-         
-
-
             this.btnMusic = new System.Windows.Forms.Button();
             this.comboBoxGTM = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -89,20 +85,28 @@ namespace SpeechToText
             // 
             // btnMusic
             // 
-            this.btnMusic.Location = new System.Drawing.Point(197, 23);
+            this.btnMusic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.btnMusic.FlatAppearance.BorderSize = 0;
+            this.btnMusic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMusic.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnMusic.ForeColor = System.Drawing.Color.White;
+            this.btnMusic.Location = new System.Drawing.Point(80, 82);
             this.btnMusic.Name = "btnMusic";
-            this.btnMusic.Size = new System.Drawing.Size(75, 23);
+            this.btnMusic.Size = new System.Drawing.Size(121, 34);
             this.btnMusic.TabIndex = 0;
             this.btnMusic.Text = "Мелодия";
-            this.btnMusic.UseVisualStyleBackColor = true;
+            this.btnMusic.UseVisualStyleBackColor = false;
             this.btnMusic.Click += new System.EventHandler(this.btnMusic_Click);
             // 
             // comboBoxGTM
             // 
+            this.comboBoxGTM.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxGTM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxGTM.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxGTM.FormattingEnabled = true;
-            this.comboBoxGTM.Location = new System.Drawing.Point(55, 25);
+            this.comboBoxGTM.Location = new System.Drawing.Point(80, 44);
             this.comboBoxGTM.Name = "comboBoxGTM";
-            this.comboBoxGTM.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxGTM.Size = new System.Drawing.Size(121, 23);
             this.comboBoxGTM.TabIndex = 1;
             this.comboBoxGTM.SelectedIndexChanged += new System.EventHandler(this.comboBoxGTM_SelectedIndexChanged);
             // 
@@ -112,16 +116,22 @@ namespace SpeechToText
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(184, 124);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSave.Location = new System.Drawing.Point(80, 156);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(121, 34);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Сохранить";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // Form2
             // 
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(30)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.comboBoxGTM);

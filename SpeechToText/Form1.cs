@@ -86,38 +86,29 @@ namespace SpeechToText
         public Form1()
         {
             InitializeComponent();
+            h = DateTime.Now.Hour;//установка времени
             Data.EventHandler = new Data.MyEvent(funcWMP);
-            this.BackColor = Color.FromArgb(25, 30, 49);
-            //кнопка записи
-            button2.BackColor = Color.FromArgb(44, 51, 80);
-            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-            Rectangle pathRect = new Rectangle(4, 4, 142, 42);
-            path.AddRectangle(pathRect);
-            Region rgn = new Region(path);
-            button2.Region = rgn;
+
+            //**********************Оформление******************
+
+
+
+
+
+
+
+            //**********************Конец формления******************
 
             //Скрываем кнопки и textbox
-     //       button5.Visible = false;
+            //       button5.Visible = false;
             button2.Visible = false;
             textBox1.Visible = false;
             textBox2.Visible = false;
-            textBox3.Visible = false;
+            //textBox3.Visible = false;
 
-            label6.ForeColor = Color.White;
-            //кнопка завести будильник
-            button3.BackColor = Color.FromArgb(44, 51, 80);
-            button3.Region = rgn;
-            button4.BackColor = Color.FromArgb(44, 51, 80);
-            button4.Region = rgn;
-
-            //установка времени
-            maskedTextBox1.ForeColor = Color.FromArgb(25, 30, 49);
-            maskedTextBox2.ForeColor = Color.FromArgb(25, 30, 49);
-            textBox1.ForeColor = Color.FromArgb(25, 30, 49);
-            textBox2.ForeColor = Color.White;
-            textBox2.BackColor = Color.FromArgb(25, 30, 49);
+           
             //цвет индикатора
-            textBox3.ForeColor = Color.FromArgb(255, 123, 91);
+            //textBox3.ForeColor = Color.FromArgb(255, 123, 91);
 
             WMP.URL = "standart.mp3";
             WMP.controls.stop();
@@ -127,28 +118,49 @@ namespace SpeechToText
 
 
             // Объект запроса
-            HttpWebRequest rew = (HttpWebRequest)WebRequest.Create("http://studypay.ru/alarmclock.php");
-            HttpWebResponse resp = (HttpWebResponse)rew.GetResponse();
-            WebHeaderCollection myWebHeaderCollection = resp.Headers;
-            rew.Accept = "*/*";
-            rew.Referer = "";
-            rew.Headers.Add("Accept-Language", "ru");
-            rew.Headers.Add("Accept-Encoding", "gzip, deflate");
-            StreamReader str = new StreamReader(rew.GetResponse().GetResponseStream(), Encoding.UTF8); //Encoding.UTF8, Encoding.Unicode, Encoding.ASCII .... 
-            string massage = str.ReadToEnd();
-            string a = massage.Trim(new Char[] { '[', ']' });
-            char[] delimiterChars = { ',' };
-            string[] words = a.Split(delimiterChars);
-            for (int i = 0; i < words.Length; i++)
+            try
             {
-                int n = words[i].Length;
-                string l = words[i].Remove(n - 1, 1);
-                patters.Add(l.Remove(0, 1));
 
+
+                HttpWebRequest rew = (HttpWebRequest)WebRequest.Create("http://studypay.ru/alarmclock.php");
+                HttpWebResponse resp = (HttpWebResponse)rew.GetResponse();
+                WebHeaderCollection myWebHeaderCollection = resp.Headers;
+                rew.Accept = "*/*";
+                rew.Referer = "";
+                rew.Headers.Add("Accept-Language", "ru");
+                rew.Headers.Add("Accept-Encoding", "gzip, deflate");
+                StreamReader str = new StreamReader(rew.GetResponse().GetResponseStream(), Encoding.UTF8);
+                //Encoding.UTF8, Encoding.Unicode, Encoding.ASCII .... 
+                string massage = str.ReadToEnd();
+                string a = massage.Trim(new Char[] { '[', ']' });
+                char[] delimiterChars = { ',' };
+                string[] words = a.Split(delimiterChars);
+                for (int i = 0; i < words.Length; i++)
+                {
+                    int n = words[i].Length;
+                    string l = words[i].Remove(n - 1, 1);
+                    patters.Add(l.Remove(0, 1));
+
+                }
+
+
+                str.Close();
+            }
+            catch (WebException)
+            {
+                if (MessageBox.Show(
+                        "Отсутствует подключение к интернету, воспользуйтесь напоминанием",
+                        "Будильник",
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    this.tabControl1.SelectedTab = tabPage2;
+                    tabPage1.Enabled = false;
+                }
+                else Environment.Exit(0);
             }
 
 
-            str.Close();
+            
 
 
 
@@ -384,7 +396,7 @@ namespace SpeechToText
                     maskedTextBox1.Visible = false;
                     button3.Text = "Убрать будильник";
                     b = true;
-                    textBox3.Visible = false;
+                    //textBox3.Visible = false;
                 }
                 else
                 {
@@ -449,6 +461,7 @@ namespace SpeechToText
         private void button4_Click(object sender, EventArgs e)
         {
            
+
             if (b == false)
             {
                 string getTime1 = maskedTextBox2.Text.ToString();
@@ -578,6 +591,26 @@ namespace SpeechToText
             Form2 settingForm = new Form2(1);
 
             settingForm.ShowDialog();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
