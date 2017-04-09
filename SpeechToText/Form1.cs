@@ -47,6 +47,7 @@ namespace SpeechToText
         bool ON = false;
         bool stop = false;
          int Hutc;
+        string musicUrl;
         private static int h;
 
 

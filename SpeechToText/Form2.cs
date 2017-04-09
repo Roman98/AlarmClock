@@ -17,14 +17,15 @@ namespace SpeechToText
         private OpenFileDialog openFileDialog1;
         private Button btnSave;
         public int num;
+        string musicUrl;
         List<Gtms> gtms = new List<Gtms>
              {
+                 new Gtms {Gt = 6, City = "Омск"},
                  new Gtms {Gt = 12, City = "Камчатка, Чукотка"},
                  new Gtms {Gt = 10, City = "Магадан, Верхоянск, Сахалин, Владивосток"},
                  new Gtms {Gt = 9, City = "Якутск"},
                  new Gtms {Gt = 8, City = "Иркутск"},
                  new Gtms {Gt = 7, City = "Красноярск"},
-                 new Gtms {Gt = 6, City = "Омск"},
                  new Gtms {Gt = 5, City = "Екатеринбург"},
                  new Gtms {Gt = 4, City = "Самара, Ижевск"},
                  new Gtms {Gt = 3, City = "Москва  Московское время (MSK)"},
@@ -74,6 +75,12 @@ namespace SpeechToText
 
          private void InitializeComponent()
          {
+             WMP.URL = "standart.mp3";
+             WMP.controls.stop();
+
+         
+
+
             this.btnMusic = new System.Windows.Forms.Button();
             this.comboBoxGTM = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -126,10 +133,10 @@ namespace SpeechToText
 
          private void btnMusic_Click(object sender, EventArgs e)
          {
-              //if (openFileDialog1.FileName == "") WMP.URL = "standart.mp3";
+            
              if (openFileDialog1.ShowDialog() == DialogResult.OK)
                  WMP.URL = openFileDialog1.FileName;
-             if (WMP.URL == "") WMP.URL = "standart.mp3";
+           
              WMP.settings.volume = 100;
              WMP.controls.stop();
             
@@ -144,6 +151,7 @@ namespace SpeechToText
          private void btnSave_Click(object sender, EventArgs e)
          {
              Data.EventHandler(this.WMP, gtms.ElementAt(comboBoxGTM.SelectedIndex).Gt, num);
+            
              Close(); 
          }
     
