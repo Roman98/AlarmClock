@@ -40,21 +40,21 @@ namespace SpeechToText
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnSettings = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.btnSetAlarm = new System.Windows.Forms.Button();
+            this.maskedshowPatterTB = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRecord = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.showPatterTB = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
+            this.AddNoteLabel = new System.Windows.Forms.Label();
             this.btnSettings2 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnSetNote = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -88,14 +88,14 @@ namespace SpeechToText
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(30)))), ((int)(((byte)(49)))));
             this.tabPage1.Controls.Add(this.btnSettings);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.maskedTextBox1);
+            this.tabPage1.Controls.Add(this.btnSetAlarm);
+            this.tabPage1.Controls.Add(this.maskedshowPatterTB);
             this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.btnRecord);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.showPatterTB);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(30)))), ((int)(((byte)(49)))));
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
@@ -104,7 +104,6 @@ namespace SpeechToText
             this.tabPage1.Size = new System.Drawing.Size(313, 395);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Будильник";
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // btnSettings
             // 
@@ -131,32 +130,32 @@ namespace SpeechToText
             this.label3.TabIndex = 23;
             this.label3.Text = "00:00:00";
             // 
-            // button3
+            // btnSetAlarm
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(76, 148);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 50);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "Завести будильник";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            this.btnSetAlarm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.btnSetAlarm.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.btnSetAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetAlarm.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSetAlarm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSetAlarm.Location = new System.Drawing.Point(76, 148);
+            this.btnSetAlarm.Name = "btnSetAlarm";
+            this.btnSetAlarm.Size = new System.Drawing.Size(150, 50);
+            this.btnSetAlarm.TabIndex = 22;
+            this.btnSetAlarm.Text = "Завести будильник";
+            this.btnSetAlarm.UseVisualStyleBackColor = false;
+            this.btnSetAlarm.Click += new System.EventHandler(this.btnSetNote_Click_1);
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(30)))), ((int)(((byte)(49)))));
-            this.maskedTextBox1.Location = new System.Drawing.Point(101, 66);
-            this.maskedTextBox1.Mask = "00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(99, 49);
-            this.maskedTextBox1.TabIndex = 21;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.maskedshowPatterTB.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.maskedshowPatterTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maskedshowPatterTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(30)))), ((int)(((byte)(49)))));
+            this.maskedshowPatterTB.Location = new System.Drawing.Point(101, 66);
+            this.maskedshowPatterTB.Mask = "00:00";
+            this.maskedshowPatterTB.Name = "maskedTextBox1";
+            this.maskedshowPatterTB.Size = new System.Drawing.Size(99, 49);
+            this.maskedshowPatterTB.TabIndex = 21;
+            this.maskedshowPatterTB.ValidatingType = typeof(System.DateTime);
             // 
             // label4
             // 
@@ -169,22 +168,22 @@ namespace SpeechToText
             this.label4.TabIndex = 20;
             this.label4.Text = "00:00";
             // 
-            // button2
+            // btnRecord
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.errorProvider1.SetIconAlignment(this.button2, System.Windows.Forms.ErrorIconAlignment.BottomRight);
-            this.button2.Location = new System.Drawing.Point(76, 292);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 50);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Запись";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.btnRecord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.btnRecord.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.btnRecord.FlatAppearance.BorderSize = 0;
+            this.btnRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecord.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRecord.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.errorProvider1.SetIconAlignment(this.btnRecord, System.Windows.Forms.ErrorIconAlignment.BottomRight);
+            this.btnRecord.Location = new System.Drawing.Point(76, 292);
+            this.btnRecord.Name = "btnRecord";
+            this.btnRecord.Size = new System.Drawing.Size(150, 50);
+            this.btnRecord.TabIndex = 19;
+            this.btnRecord.Text = "Запись";
+            this.btnRecord.UseVisualStyleBackColor = false;
+            this.btnRecord.Click += new System.EventHandler(this.btnRecord_Click_1);
             // 
             // label2
             // 
@@ -212,14 +211,15 @@ namespace SpeechToText
             this.textBox2.Size = new System.Drawing.Size(247, 25);
             this.textBox2.TabIndex = 26;
             // 
-            // textBox1
+            // showPatterTB
             // 
-            this.textBox1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(30)))), ((int)(((byte)(49)))));
-            this.textBox1.Location = new System.Drawing.Point(25, 240);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(247, 25);
-            this.textBox1.TabIndex = 25;
+            this.showPatterTB.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.showPatterTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(30)))), ((int)(((byte)(49)))));
+            this.showPatterTB.Location = new System.Drawing.Point(25, 240);
+            this.showPatterTB.Name = "showPatterTB";
+            this.showPatterTB.Size = new System.Drawing.Size(247, 25);
+            this.showPatterTB.TabIndex = 25;
+            this.showPatterTB.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label6
             // 
@@ -236,11 +236,11 @@ namespace SpeechToText
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(30)))), ((int)(((byte)(49)))));
-            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.AddNoteLabel);
             this.tabPage2.Controls.Add(this.btnSettings2);
             this.tabPage2.Controls.Add(this.textBox4);
             this.tabPage2.Controls.Add(this.maskedTextBox2);
-            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.btnSetNote);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
@@ -249,19 +249,17 @@ namespace SpeechToText
             this.tabPage2.Size = new System.Drawing.Size(313, 395);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Напомнить";
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
-            // label8
+            // AddNoteLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label8.Location = new System.Drawing.Point(73, 271);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 15);
-            this.label8.TabIndex = 37;
-            this.label8.Text = "Добавить заметку";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            this.AddNoteLabel.AutoSize = true;
+            this.AddNoteLabel.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNoteLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.AddNoteLabel.Location = new System.Drawing.Point(73, 271);
+            this.AddNoteLabel.Name = "AddNoteLabel";
+            this.AddNoteLabel.Size = new System.Drawing.Size(104, 15);
+            this.AddNoteLabel.TabIndex = 37;
+            this.AddNoteLabel.Text = "Добавить заметку";
             // 
             // btnSettings2
             // 
@@ -296,20 +294,20 @@ namespace SpeechToText
             this.maskedTextBox2.TabIndex = 33;
             this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
             // 
-            // button4
+            // btnSetNote
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(76, 148);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 50);
-            this.button4.TabIndex = 32;
-            this.button4.Text = "Завести будильник";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnSetNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.btnSetNote.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(45)))), ((int)(((byte)(71)))));
+            this.btnSetNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetNote.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSetNote.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSetNote.Location = new System.Drawing.Point(76, 148);
+            this.btnSetNote.Name = "btnSetNote";
+            this.btnSetNote.Size = new System.Drawing.Size(150, 50);
+            this.btnSetNote.TabIndex = 32;
+            this.btnSetNote.Text = "Завести будильник";
+            this.btnSetNote.UseVisualStyleBackColor = false;
+            this.btnSetNote.Click += new System.EventHandler(this.btnSetNote_Click);
             // 
             // label7
             // 
@@ -375,14 +373,14 @@ namespace SpeechToText
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Button btnSetAlarm;
+        private System.Windows.Forms.MaskedTextBox maskedshowPatterTB;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRecord;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox showPatterTB;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Timer timer1;
@@ -391,14 +389,14 @@ namespace SpeechToText
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnSetNote;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnSettings2;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label AddNoteLabel;
     }
 }
 

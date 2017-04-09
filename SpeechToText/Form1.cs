@@ -25,20 +25,11 @@ namespace SpeechToText
    
     public partial class Form1 : Form
     {
-    
-
+ 
         Timer timer01 = new Timer();
-
-        //wmp player
-        
+        //wmp player       
         public WMPLib.WindowsMediaPlayer WMP = new WMPLib.WindowsMediaPlayer();
-        public WMPLib.WindowsMediaPlayer WMPL = new WMPLib.WindowsMediaPlayer();
-
-        
-
-        
-
-        
+        public WMPLib.WindowsMediaPlayer WMPL = new WMPLib.WindowsMediaPlayer();       
         //SoundPlayer sp = new SoundPlayer("1_converted.wav");
         bool b = false;
         WaveIn waveIn;
@@ -50,78 +41,27 @@ namespace SpeechToText
         string musicUrl;
         private static int h;
 
-
-
-
-
-
-
         // string[] patters;
         List<string> patters = new List<string>();
-
-
-
-
-
-
-
-
-        string[] patters1 =
-        {
-            "Шла Саша по шоссе и сосала сушку",
-            "Течет речка печет печка",
-            "скороговорки как караси на сковородке",
-            "пакет под попкорн",
-            "Осип охрип Архип Осип",
-            "сачок зацепился за сучок",
-            "Цапля чахла цапля сохла цапля сдохла",
-            "Ехал Грека через реку видит Грека",
-            "прецедент с претендентом",
-            "жутко жуку жить на суку"
-        };
-
         Random rnd = new Random();
         int num_putter;
-
         public Form1()
         {
             InitializeComponent();
             h = DateTime.Now.Hour;//установка времени
             Data.EventHandler = new Data.MyEvent(funcWMP);
-
-            //**********************Оформление******************
-
-
-
-
-
-
-
-            //**********************Конец формления******************
-
             //Скрываем кнопки и textbox
-            //       button5.Visible = false;
-            button2.Visible = false;
-            textBox1.Visible = false;
+            btnRecord.Visible = false;
+            showPatterTB.Visible = false;
             textBox2.Visible = false;
-            //textBox3.Visible = false;
-
-           
-            //цвет индикатора
-            //textBox3.ForeColor = Color.FromArgb(255, 123, 91);
-
+            //Установка стандарной аудио
             WMP.URL = "standart.mp3";
             WMP.controls.stop();
             WMPL.URL = "standart.mp3";
             WMPL.controls.stop();
-
-
-
             // Объект запроса
             try
             {
-
-
                 HttpWebRequest rew = (HttpWebRequest)WebRequest.Create("http://studypay.ru/alarmclock.php");
                 HttpWebResponse resp = (HttpWebResponse)rew.GetResponse();
                 WebHeaderCollection myWebHeaderCollection = resp.Headers;
@@ -140,10 +80,7 @@ namespace SpeechToText
                     int n = words[i].Length;
                     string l = words[i].Remove(n - 1, 1);
                     patters.Add(l.Remove(0, 1));
-
                 }
-
-
                 str.Close();
             }
             catch (WebException)
@@ -158,20 +95,6 @@ namespace SpeechToText
                 }
                 else Environment.Exit(0);
             }
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
         }
 
         private void SpeechToTex()
@@ -182,7 +105,7 @@ namespace SpeechToText
             writer.Close();
             label2.Text = "";
             ON = false;
-            button2.Text = "Запись";
+            btnRecord.Text = "Запись";
             //ОТПРАВКА НА GSPEECH
             WebRequest request =
                 WebRequest.Create(
@@ -196,28 +119,8 @@ namespace SpeechToText
             HttpWebResponse response = (HttpWebResponse) request.GetResponse();
             // Open the stream using a StreamReader for easy access.
             StreamReader reader = new StreamReader(response.GetResponseStream());
-
             string a = String.Copy(reader.ReadToEnd());
-
-         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
             //*************ПРОВЕРКА НА ПРАВИЛЬНОСТЬ ПРОИЗНОШЕНИЯ*************
             if (a.Contains(patters[num_putter]) == true)
             {
@@ -228,13 +131,12 @@ namespace SpeechToText
                 textBox2.TextAlign = HorizontalAlignment.Center;
                 timer1.Stop();
                 WMP.controls.stop();
-                maskedTextBox1.Visible = true;
-                maskedTextBox1.Text = "00:00";
-                button3.Text = "Завести будильник";
+                maskedshowPatterTB.Visible = true;
+                maskedshowPatterTB.Text = "00:00";
+                btnSetAlarm.Text = "Завести будильник";
                 //скрываем кнопки
-                button2.Visible = false;
-                textBox1.Visible = false;
-
+                btnRecord.Visible = false;
+                showPatterTB.Visible = false;
             }
             else
             {
@@ -245,15 +147,7 @@ namespace SpeechToText
 
             reader.Close();
             response.Close();
-
         }
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         void waveIn_DataAvailable(object sender, WaveInEventArgs e)
         {
             writer.WriteData(e.Buffer, 0, e.BytesRecorded);
@@ -267,16 +161,6 @@ namespace SpeechToText
             writer.Close();
             writer = null;
         }
-
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
         private void Form1_Load_1(object sender, EventArgs e)
         {
 
@@ -285,72 +169,19 @@ namespace SpeechToText
             timer01.Tick += new EventHandler(timer1_Tick_1);
             timer01.Start();
         }
-
-        private void timer2_Tick_1(object sender, EventArgs e)
-        {
-           
-        }
-
         private void timer1_Tick_1(object sender, EventArgs e)
         {
 
-            
-          
             label3.Text = DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" +
-                          DateTime.Now.Second.ToString("00");
-//        if ((h + DateTime.UtcNow.Hour) > 23)
-//          {
-//               h = (h + DateTime.UtcNow.Hour) - 24;
-//          }
-//         else h = (h + DateTime.UtcNow.Hour);
-            
-         
+                          DateTime.Now.Second.ToString("00");        
              label5.Text = h.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
                  DateTime.UtcNow.Second.ToString("00");
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox1_MaskInputRejected_1(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnMusic_Click(object sender, EventArgs e)
-        {
-      
-
-        }
-
         public void StopMusic()
         {
             WMP.controls.stop();
         }
-
-        private void button2_Click_1(object sender, EventArgs e)
+        private void btnRecord_Click_1(object sender, EventArgs e)
         {
 
             if (ON == false)
@@ -363,11 +194,9 @@ namespace SpeechToText
                 waveIn.WaveFormat = new WaveFormat(16000, 1);
                 writer = new WaveFileWriter(outputFilename, waveIn.WaveFormat);
                 label2.Text = "Идет запись...";
-                button2.Text = "Стоп";
+                btnRecord.Text = "Стоп";
                 waveIn.StartRecording();
                 ON = true;
-
-
             }
             else
             {
@@ -375,35 +204,29 @@ namespace SpeechToText
             }
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+        private void btnSetNote_Click_1(object sender, EventArgs e)
         {
             if (b == false)
             {
-                string getTime = maskedTextBox1.Text.ToString();
+                string getTime = maskedshowPatterTB.Text.ToString();
                 int topHours = 23;
                 int topMinutes = 59;
-
                 string[] hoursMinutes = getTime.Split(':');
                 int hours = Int16.Parse(hoursMinutes[0]);
                 int minutes = Int16.Parse(hoursMinutes[1]);
-                //  DateTime d1 = new DateTime(0, 0, 0, 23, 59, 0, 0);
                 if (topHours >= hours && topMinutes >= minutes)
                 {
                     errorProvider1.Clear();
 
-                    label4.Text = maskedTextBox1.Text;
+                    label4.Text = maskedshowPatterTB.Text;
                     timer2.Start();
-                    maskedTextBox1.Visible = false;
-                    button3.Text = "Убрать будильник";
+                    maskedshowPatterTB.Visible = false;
+                    btnSetAlarm.Text = "Убрать будильник";
                     b = true;
-                    //textBox3.Visible = false;
                 }
                 else
                 {
-                    //если ввели неправильное время
-
-                    errorProvider1.SetError(maskedTextBox1, "Вы ввели некорректное время, повторите ввод");
-
+                    errorProvider1.SetError(maskedshowPatterTB, "Вы ввели некорректное время, повторите ввод");
                 }
 
             }
@@ -411,96 +234,62 @@ namespace SpeechToText
             {
                 label4.Text = "00:00";
                 timer2.Stop();
-                maskedTextBox1.Visible = true;
-                button3.Text = "Завести будильник";
+                maskedshowPatterTB.Visible = true;
+                btnSetAlarm.Text = "Завести будильник";
                 b = false;
             }
         }
-
-        private void btnMusic_Click_1(object sender, EventArgs e)
-        {
-//
-//            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-//                WMP.URL = openFileDialog1.FileName;
-//            WMP.settings.volume = 100;
-//            WMP.controls.stop();
-        }
-
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (label3.Text == label4.Text + ":00")
-            {
-
-
-
-
-
-             
-
-
-
-
-
-
-
-
+            {          
                 WMP.controls.play();
                 //Показываем кнопки
-                textBox1.Visible = true;
-                button2.Visible = true;
+                showPatterTB.Visible = true;
+                btnRecord.Visible = true;
                 //вывод скороговорки
                 num_putter = rnd.Next(0, 9);
-                textBox1.TextAlign = HorizontalAlignment.Center;
-                textBox1.Text = patters[num_putter];
-
-
-            }
-            
+                showPatterTB.TextAlign = HorizontalAlignment.Center;
+                showPatterTB.Text = patters[num_putter];
+            }          
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-           
-
+        private void btnSetNote_Click(object sender, EventArgs e)
+        {         
             if (b == false)
             {
                 string getTime1 = maskedTextBox2.Text.ToString();
                 int topHours1 = 23;
                 int topMinutes1 = 59;
-
                 string[] hoursMinutes = getTime1.Split(':');
                 int hours = Int16.Parse(hoursMinutes[0]);
                 int minutes = Int16.Parse(hoursMinutes[1]);
-                //  DateTime d1 = new DateTime(0, 0, 0, 23, 59, 0, 0);
                 if (topHours1 >= hours && topMinutes1 >= minutes)
                 {
                     errorProvider1.Clear();
                     label7.Text = maskedTextBox2.Text;
                     timer3.Start();
                     maskedTextBox2.Visible = false;
-                    textBox4.Visible = false; 
-                    button4.Text = "Убрать будильник";
+                    textBox4.Visible = false;
+                    AddNoteLabel.Visible = false;
+                    btnSetNote.Text = "Убрать будильник";
                     b = true;
-                    //  textBox3.Visible = false;
                 }
                 else
                 {
                     errorProvider1.SetError(maskedTextBox2, "Вы ввели некорректное время, повторите ввод");
-                }
-                
+                }                
             }
             else if (b == true)
             {
                 label7.Text = "00:00";
                 timer3.Stop();
                 maskedTextBox2.Visible = true;
-                textBox4.Visible = true; 
-                button4.Text = "Завести будильник";
+                textBox4.Visible = true;
+                AddNoteLabel.Visible = true;
+                btnSetNote.Text = "Завести будильник";
                 b = false;
             }
-
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -508,14 +297,12 @@ namespace SpeechToText
             WMPL.settings.volume = 100;
             WMPL.controls.stop();
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
             WMPL.controls.stop();
             maskedTextBox2.Visible = true;
             maskedTextBox2.Text = "00:00";
-            button4.Text = "Завести будильник";
-   //         button5.Visible = false;
+            btnSetNote.Text = "Завести будильник";
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -526,7 +313,6 @@ namespace SpeechToText
 
                  stop = true;
                 WMPL.controls.play();
-               // button5.Visible = true;
                  if (MessageBox.Show(
                          reminder,
                          "Будильник",
@@ -537,25 +323,18 @@ namespace SpeechToText
                      maskedTextBox2.Text = "00:00";
                      textBox4.Visible = true;
                      textBox4.Text = "";
-                     button4.Text = "Завести будильник";
+                     btnSetNote.Text = "Завести будильник";
                      b = false;
                      stop = false;
                  }
-
-                
-
-
             }
             
         }
-
         public void funcWMP(WMPLib.WindowsMediaPlayer WMP, int hT, int num)
         {
             if (num==0)
             {
                 this.WMP = WMP;
-              
-
             }
             if (num == 1)
             {
@@ -568,15 +347,9 @@ namespace SpeechToText
                 else if ((DateTime.UtcNow.Hour + hT) < 0) hT = (hT + DateTime.UtcNow.Hour) + 24;
                 else hT = (hT + DateTime.UtcNow.Hour);
             }
-            label8.Text = hT.ToString();
-            
-         //   label5.Text = h.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
-              //          DateTime.UtcNow.Second.ToString("00");
+            AddNoteLabel.Text = hT.ToString();
             
             h = hT;
-            //label9.Text = hT.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
-            //     DateTime.UtcNow.Second.ToString("00");
-
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -593,22 +366,7 @@ namespace SpeechToText
             settingForm.ShowDialog();
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
