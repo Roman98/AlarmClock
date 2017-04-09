@@ -19,4 +19,10 @@ namespace SpeechToText
             Application.Run(new Form1());
         }
     }
+    public static class Data
+    {
+        public delegate void MyEvent(WMPLib.WindowsMediaPlayer WMP, int h,int num);
+        public static MyEvent EventHandler;
+
+    }
 }

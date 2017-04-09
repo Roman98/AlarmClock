@@ -33,6 +33,7 @@ namespace SpeechToText
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
@@ -58,6 +59,9 @@ namespace SpeechToText
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnSettings2 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -80,6 +84,7 @@ namespace SpeechToText
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.tabPage1.Controls.Add(this.btnSettings);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.maskedTextBox1);
@@ -98,6 +103,16 @@ namespace SpeechToText
             this.tabPage1.Size = new System.Drawing.Size(313, 376);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Будильник";
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Location = new System.Drawing.Point(245, 71);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(58, 23);
+            this.btnSettings.TabIndex = 29;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // label3
             // 
@@ -225,6 +240,9 @@ namespace SpeechToText
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.btnSettings2);
             this.tabPage2.Controls.Add(this.textBox4);
             this.tabPage2.Controls.Add(this.maskedTextBox2);
             this.tabPage2.Controls.Add(this.button4);
@@ -319,6 +337,34 @@ namespace SpeechToText
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnSettings2
+            // 
+            this.btnSettings2.Location = new System.Drawing.Point(228, 97);
+            this.btnSettings2.Name = "btnSettings2";
+            this.btnSettings2.Size = new System.Drawing.Size(75, 23);
+            this.btnSettings2.TabIndex = 36;
+            this.btnSettings2.Text = "Settings";
+            this.btnSettings2.UseVisualStyleBackColor = true;
+            this.btnSettings2.Click += new System.EventHandler(this.btnSettings2_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(253, 159);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "label8";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(253, 188);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "label9";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,6 +414,10 @@ namespace SpeechToText
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnSettings2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
 
     }
 }

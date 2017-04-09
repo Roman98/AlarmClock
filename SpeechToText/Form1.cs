@@ -22,14 +22,22 @@ using System.Runtime.InteropServices;
 
 namespace SpeechToText
 {
+   
     public partial class Form1 : Form
     {
+    
 
         Timer timer01 = new Timer();
 
         //wmp player
+        
         public WMPLib.WindowsMediaPlayer WMP = new WMPLib.WindowsMediaPlayer();
         public WMPLib.WindowsMediaPlayer WMPL = new WMPLib.WindowsMediaPlayer();
+
+        
+
+        
+
         
         //SoundPlayer sp = new SoundPlayer("1_converted.wav");
         bool b = false;
@@ -38,6 +46,8 @@ namespace SpeechToText
         string outputFilename = "demo.wav";
         bool ON = false;
         bool stop = false;
+         int Hutc;
+        private static int h;
 
 
 
@@ -75,6 +85,7 @@ namespace SpeechToText
         public Form1()
         {
             InitializeComponent();
+            Data.EventHandler = new Data.MyEvent(funcWMP);
             this.BackColor = Color.FromArgb(25, 30, 49);
             //кнопка записи
             button2.BackColor = Color.FromArgb(44, 51, 80);
@@ -269,16 +280,19 @@ namespace SpeechToText
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            int h = 9;
+
+            
+          
             label3.Text = DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" +
                           DateTime.Now.Second.ToString("00");
-            if ((h + DateTime.UtcNow.Hour) > 23)
-            {
-               h=(h + DateTime.UtcNow.Hour) - 24;
-            }
-            
-                label5.Text = h.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
-                          DateTime.UtcNow.Second.ToString("00");
+//        if ((h + DateTime.UtcNow.Hour) > 23)
+//          {
+//               h = (h + DateTime.UtcNow.Hour) - 24;
+//          }
+//         else h = (h + DateTime.UtcNow.Hour);
+         
+             label5.Text = h.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
+                 DateTime.UtcNow.Second.ToString("00");
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -391,11 +405,11 @@ namespace SpeechToText
 
         private void btnMusic_Click_1(object sender, EventArgs e)
         {
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                WMP.URL = openFileDialog1.FileName;
-            WMP.settings.volume = 100;
-            WMP.controls.stop();
+//
+//            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+//                WMP.URL = openFileDialog1.FileName;
+//            WMP.settings.volume = 100;
+//            WMP.controls.stop();
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -518,6 +532,45 @@ namespace SpeechToText
 
             }
             
+        }
+
+        public void funcWMP(WMPLib.WindowsMediaPlayer WMP, int hT, int num)
+        {
+            if (num==0)
+            {
+                this.WMP = WMP;
+              if ((hT + DateTime.UtcNow.Hour) > 23)
+               {
+                hT = (hT + DateTime.UtcNow.Hour) - 24;
+                  
+               }
+              else if ((DateTime.UtcNow.Hour + hT) < 0) hT = (hT + DateTime.UtcNow.Hour) + 24;
+              else hT = (hT + DateTime.UtcNow.Hour);
+
+            }
+            if (num == 1) this.WMPL = WMP;
+            label8.Text = hT.ToString();
+            
+         //   label5.Text = h.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
+              //          DateTime.UtcNow.Second.ToString("00");
+            h = hT;
+            label9.Text = h.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
+                 DateTime.UtcNow.Second.ToString("00");
+
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            Form2 settingForm = new Form2(0);
+           
+            settingForm.ShowDialog();
+        }
+
+        private void btnSettings2_Click(object sender, EventArgs e)
+        {
+            Form2 settingForm = new Form2(1);
+
+            settingForm.ShowDialog();
         }
     }
 }
