@@ -290,6 +290,7 @@ namespace SpeechToText
 //               h = (h + DateTime.UtcNow.Hour) - 24;
 //          }
 //         else h = (h + DateTime.UtcNow.Hour);
+            
          
              label5.Text = h.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
                  DateTime.UtcNow.Second.ToString("00");
@@ -539,23 +540,28 @@ namespace SpeechToText
             if (num==0)
             {
                 this.WMP = WMP;
-              if ((hT + DateTime.UtcNow.Hour) > 23)
-               {
-                hT = (hT + DateTime.UtcNow.Hour) - 24;
-                  
-               }
-              else if ((DateTime.UtcNow.Hour + hT) < 0) hT = (hT + DateTime.UtcNow.Hour) + 24;
-              else hT = (hT + DateTime.UtcNow.Hour);
+              
 
             }
-            if (num == 1) this.WMPL = WMP;
+            if (num == 1)
+            {
+                this.WMPL = WMP;
+                if ((hT + DateTime.UtcNow.Hour) > 23)
+                {
+                    hT = (hT + DateTime.UtcNow.Hour) - 24;
+
+                }
+                else if ((DateTime.UtcNow.Hour + hT) < 0) hT = (hT + DateTime.UtcNow.Hour) + 24;
+                else hT = (hT + DateTime.UtcNow.Hour);
+            }
             label8.Text = hT.ToString();
             
          //   label5.Text = h.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
               //          DateTime.UtcNow.Second.ToString("00");
+            
             h = hT;
-            label9.Text = h.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
-                 DateTime.UtcNow.Second.ToString("00");
+            //label9.Text = hT.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + ":" +
+            //     DateTime.UtcNow.Second.ToString("00");
 
         }
 
