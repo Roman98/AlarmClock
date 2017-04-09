@@ -53,9 +53,11 @@ namespace SpeechToText
          {
              InitializeComponent();
 
+            WMP.URL = "standart.mp3";
+            WMP.controls.stop();
 
 
-             this.num = num;
+            this.num = num;
              comboBoxGTM.SelectedIndexChanged += comboBoxGTM_SelectedIndexChanged;
              comboBoxGTM.DataSource = gtms;
              comboBoxGTM.DisplayMember = "City";
@@ -75,9 +77,7 @@ namespace SpeechToText
 
          private void InitializeComponent()
          {
-             WMP.URL = "standart.mp3";
-             WMP.controls.stop();
-
+         
          
 
 
