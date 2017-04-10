@@ -145,14 +145,14 @@ namespace SpeechToText
             this.btnSetAlarm.UseVisualStyleBackColor = false;
             this.btnSetAlarm.Click += new System.EventHandler(this.btnSetNote_Click_1);
             // 
-            // maskedTextBox1
+            // maskedshowPatterTB
             // 
             this.maskedshowPatterTB.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.maskedshowPatterTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.maskedshowPatterTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(30)))), ((int)(((byte)(49)))));
             this.maskedshowPatterTB.Location = new System.Drawing.Point(101, 66);
             this.maskedshowPatterTB.Mask = "00:00";
-            this.maskedshowPatterTB.Name = "maskedTextBox1";
+            this.maskedshowPatterTB.Name = "maskedshowPatterTB";
             this.maskedshowPatterTB.Size = new System.Drawing.Size(99, 49);
             this.maskedshowPatterTB.TabIndex = 21;
             this.maskedshowPatterTB.ValidatingType = typeof(System.DateTime);
@@ -260,6 +260,7 @@ namespace SpeechToText
             this.AddNoteLabel.Size = new System.Drawing.Size(104, 15);
             this.AddNoteLabel.TabIndex = 37;
             this.AddNoteLabel.Text = "Добавить заметку";
+            this.AddNoteLabel.Click += new System.EventHandler(this.AddNoteLabel_Click);
             // 
             // btnSettings2
             // 
@@ -305,7 +306,7 @@ namespace SpeechToText
             this.btnSetNote.Name = "btnSetNote";
             this.btnSetNote.Size = new System.Drawing.Size(150, 50);
             this.btnSetNote.TabIndex = 32;
-            this.btnSetNote.Text = "Завести будильник";
+            this.btnSetNote.Text = "Установить";
             this.btnSetNote.UseVisualStyleBackColor = false;
             this.btnSetNote.Click += new System.EventHandler(this.btnSetNote_Click);
             // 

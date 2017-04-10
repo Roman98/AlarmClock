@@ -13,7 +13,7 @@ using System.Net;
 using System.IO;
 using System.IO.Compression;
 using System.Media;
-
+using Newtonsoft.Json;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
@@ -42,7 +42,7 @@ namespace SpeechToText
         private static int h;
 
         // string[] patters;
-        List<string> patters = new List<string>();
+        List<string> patters;
         Random rnd = new Random();
         int num_putter;
         public Form1()
@@ -59,7 +59,7 @@ namespace SpeechToText
             WMP.controls.stop();
             WMPL.URL = "standart.mp3";
             WMPL.controls.stop();
-            // Объект запроса
+            // Объект запроса к серверу
             try
             {
                 HttpWebRequest rew = (HttpWebRequest)WebRequest.Create("http://studypay.ru/alarmclock.php");
@@ -71,16 +71,22 @@ namespace SpeechToText
                 rew.Headers.Add("Accept-Encoding", "gzip, deflate");
                 StreamReader str = new StreamReader(rew.GetResponse().GetResponseStream(), Encoding.UTF8);
                 //Encoding.UTF8, Encoding.Unicode, Encoding.ASCII .... 
+
+
                 string massage = str.ReadToEnd();
-                string a = massage.Trim(new Char[] { '[', ']' });
-                char[] delimiterChars = { ',' };
-                string[] words = a.Split(delimiterChars);
-                for (int i = 0; i < words.Length; i++)
-                {
-                    int n = words[i].Length;
-                    string l = words[i].Remove(n - 1, 1);
-                    patters.Add(l.Remove(0, 1));
-                }
+                patters = JsonConvert.DeserializeObject<List<string>>(massage);
+
+                //string a = massage.Trim(new Char[] { '[', ']' });
+                //char[] delimiterChars = { ',' };
+                //string[] words = a.Split(delimiterChars);
+                //for (int i = 0; i < words.Length; i++)
+                //{
+                //    int n = words[i].Length;
+                //    string l = words[i].Remove(n - 1, 1);
+                //    patters.Add(l.Remove(0, 1));
+                //}
+
+
                 str.Close();
             }
             catch (WebException)
@@ -186,6 +192,7 @@ namespace SpeechToText
 
             if (ON == false)
             {
+                
                 WMP.controls.stop();
                 waveIn = new WaveIn();
                 waveIn.DeviceNumber = 0;
@@ -208,6 +215,7 @@ namespace SpeechToText
         {
             if (b == false)
             {
+                textBox2.Visible = false;
                 string getTime = maskedshowPatterTB.Text.ToString();
                 int topHours = 23;
                 int topMinutes = 59;
@@ -271,7 +279,7 @@ namespace SpeechToText
                     maskedTextBox2.Visible = false;
                     textBox4.Visible = false;
                     AddNoteLabel.Visible = false;
-                    btnSetNote.Text = "Убрать будильник";
+                    btnSetNote.Text = "Убрать";
                     b = true;
                 }
                 else
@@ -286,24 +294,24 @@ namespace SpeechToText
                 maskedTextBox2.Visible = true;
                 textBox4.Visible = true;
                 AddNoteLabel.Visible = true;
-                btnSetNote.Text = "Завести будильник";
+                btnSetNote.Text = "Установить";
                 b = false;
             }
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                WMPL.URL = openFileDialog1.FileName;
-            WMPL.settings.volume = 100;
-            WMPL.controls.stop();
-        }
-        private void button5_Click(object sender, EventArgs e)
-        {
-            WMPL.controls.stop();
-            maskedTextBox2.Visible = true;
-            maskedTextBox2.Text = "00:00";
-            btnSetNote.Text = "Завести будильник";
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    if (openFileDialog1.ShowDialog() == DialogResult.OK)
+        //        WMPL.URL = openFileDialog1.FileName;
+        //    WMPL.settings.volume = 100;
+        //    WMPL.controls.stop();
+        //}
+        //private void button5_Click(object sender, EventArgs e)
+        //{
+        //    WMPL.controls.stop();
+        //    maskedTextBox2.Visible = true;
+        //    maskedTextBox2.Text = "00:00";
+        //    btnSetNote.Text = "Завести будильник";
+        //}
 
         private void timer3_Tick(object sender, EventArgs e)
         {
@@ -347,7 +355,7 @@ namespace SpeechToText
                 else if ((DateTime.UtcNow.Hour + hT) < 0) hT = (hT + DateTime.UtcNow.Hour) + 24;
                 else hT = (hT + DateTime.UtcNow.Hour);
             }
-            AddNoteLabel.Text = hT.ToString();
+            //AddNoteLabel.Text = hT.ToString();
             
             h = hT;
         }
@@ -367,6 +375,11 @@ namespace SpeechToText
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddNoteLabel_Click(object sender, EventArgs e)
         {
 
         }
